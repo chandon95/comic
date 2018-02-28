@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+
+<head>
+	<title>Document</title>
+	<style>
+		.questions {
+			display: none;
+		}
+
+		.questions:first-of-type {
+			display: block
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="questions" id="hello">
+		<h1>Batman's first name is?</h1>
+		<label><input type="radio" name="q1" value="Bruce"> Bruce</label>
+		<label><input type="radio" name="q1" value="Mark"> Mark</label>
+		<label><input type="radio" name="q1" value="Steven"> Steven</label>
+		<br>
+		<button class="questions">Next1</button>
+
+	</div>
+	<div class="questions">
+		<h1>Spiderman lives in:</h1>
+		<label><input type="radio" name="q2" value="New Jersey"> New Jersey</label>
+		<label><input type="radio" name="q2" value="New York"> New York</label>
+		<label><input type="radio" name="q2" value="Boston"> Boston</label>
+		<br>
+		<button class="questions">Next2</button>
+	</div>
+	<div>
+		<h1>How many claws does Wolverine have?</h1>
+		<label><input type="radio" name="q3" value="2"> 2</label>
+		<label><input type="radio" name="q3" value="4"> 4</label>
+		<label><input type="radio" name="q3" value="6"> 6</label>
+		<br>
+		<button id='done'>Finish</button>
+	</div>
+	<div class="questions">
+		<h1>You Scored:</h1>
+		<h1></h1>
+	</div>
+
+	<script>
+		answer1 = "Bruce";
+		answer2 = "New York";
+		answer3 = "6";
+		nextbtn = document.getElementsByClassName('.questions');
+
+		for (c in nextbtn) {
+			nextbtn[c].onclick = function() {
+				this.parentElement.style.display = "none";
+				this.parentElement.nextElementSibling.style.display = "block";
+			};
+		};
+
+		document.getElementbyId('done').onclick = function() {
+
+			this.parentElement.style.display = "none";
+			this.parentElement.nextElementSibling.style.display = "block";
+
+			r1 = document.querySelector('input[name="q1"]:checked').value;
+			r2 = document.querySelector('input[name="q2"]:checked').value;
+			r3 = document.querySelector('input[name="q3"]:checked').value;
+			score = 0;
+			if (r1 == answer1) {
+				++score;
+			}
+			if (r1 == answer2) {
+				++score;
+			}
+			if (r1 == answer3) {
+				++score;
+			}
+			console.log(score);
+		};
+		console.log(score);
+			questioncount = document.getElementsByClassName('question').length;
+			score = (score/questioncount) * 100;
+			score = score.toFixed(0) + "%";
+			console.log(score);
+			document.getElementById("score").innerHTML = score;
+
+	</script>
+</body>
+
+</html>
