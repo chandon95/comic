@@ -11,6 +11,7 @@
 		.questions:first-of-type {
 			display: block
 		}
+
 	</style>
 </head>
 
@@ -22,7 +23,7 @@
 		<label><input type="radio" name="q1" value="Mark"> Mark</label>
 		<label><input type="radio" name="q1" value="Steven"> Steven</label>
 		<br>
-		<button class="questions">Next1</button>
+		<button class="answer">Next1</button>
 
 	</div>
 	<div class="questions">
@@ -31,26 +32,27 @@
 		<label><input type="radio" name="q2" value="New York"> New York</label>
 		<label><input type="radio" name="q2" value="Boston"> Boston</label>
 		<br>
-		<button class="questions">Next2</button>
+		<button class="answer">Next2</button>
 	</div>
-	<div>
+	<div class="questions">
 		<h1>How many claws does Wolverine have?</h1>
 		<label><input type="radio" name="q3" value="2"> 2</label>
 		<label><input type="radio" name="q3" value="4"> 4</label>
 		<label><input type="radio" name="q3" value="6"> 6</label>
 		<br>
-		<button id='done'>Finish</button>
+		<button id="done">Finish</button>
 	</div>
-	<div class="questions">
+	<div class="results">
 		<h1>You Scored:</h1>
-		<h1></h1>
+		<h1 id="score"></h1>
+
 	</div>
 
 	<script>
 		answer1 = "Bruce";
 		answer2 = "New York";
 		answer3 = "6";
-		nextbtn = document.getElementsByClassName('.questions');
+		nextbtn = document.getElementsByClassName('answer');
 
 		for (c in nextbtn) {
 			nextbtn[c].onclick = function() {
@@ -59,7 +61,7 @@
 			};
 		};
 
-		document.getElementbyId('done').onclick = function() {
+		document.getElementById('done').onclick = function() {
 
 			this.parentElement.style.display = "none";
 			this.parentElement.nextElementSibling.style.display = "block";
@@ -71,20 +73,20 @@
 			if (r1 == answer1) {
 				++score;
 			}
-			if (r1 == answer2) {
+			if (r2 == answer2) {
 				++score;
 			}
-			if (r1 == answer3) {
+			if (r3 == answer3) {
 				++score;
 			}
 			console.log(score);
-		};
-		console.log(score);
-			questioncount = document.getElementsByClassName('question').length;
-			score = (score/questioncount) * 100;
+
+			questioncount = document.getElementsByClassName('questions').length;
+			score = (score / questioncount) * 100;
 			score = score.toFixed(0) + "%";
 			console.log(score);
 			document.getElementById("score").innerHTML = score;
+		};
 
 	</script>
 </body>
